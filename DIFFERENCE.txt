@@ -1,0 +1,44 @@
+HAS A DIFFERENCE:::::::::
+
+
+
+
+MariaDB [menagerie]> SELECT * FROM pet WHERE name REGEXP '^.{5}$';
++-------+--------+---------+------+------------+------------+
+| name  | owner  | species | sex  | birth      | death      |
++-------+--------+---------+------+------------+------------+
+| Claws | Gwen   | cat     | m    | 1994-03-17 | 0000-00-00 |
+| Buffy | Harold | dog     | f    | 1989-05-13 | 0000-00-00 |
++-------+--------+---------+------+------------+------------+
+2 rows in set (0.03 sec)
+
+MariaDB [menagerie]> SELECT * FROM pet WHERE name REGEXP '.{5}$';
++----------+--------+---------+------+------------+------------+
+| name     | owner  | species | sex  | birth      | death      |
++----------+--------+---------+------+------------+------------+
+| Fluffy   | Harold | cat     | f    | 1993-02-04 | 0000-00-00 |
+| Claws    | Gwen   | cat     | m    | 1994-03-17 | 0000-00-00 |
+| Buffy    | Harold | dog     | f    | 1989-05-13 | 0000-00-00 |
+| Bowser   | Diane  | dog     | m    | 1979-08-31 | 1995-07-29 |
+| Chirpy   | Gwen   | bird    | f    | 1998-09-11 | 0000-00-00 |
+| Whistler | Gwen   | bird    |      | 1997-12-09 | 0000-00-00 |
++----------+--------+---------+------+------------+------------+
+6 rows in set (0.00 sec)
+
+MariaDB [menagerie]> SELECT * FROM pet WHERE name REGEXP 'b';
++--------+--------+---------+------+------------+------------+
+| name   | owner  | species | sex  | birth      | death      |
++--------+--------+---------+------+------------+------------+
+| Buffy  | Harold | dog     | f    | 1989-05-13 | 0000-00-00 |
+| Bowser | Diane  | dog     | m    | 1979-08-31 | 1995-07-29 |
++--------+--------+---------+------+------------+------------+
+2 rows in set (0.00 sec)
+
+MariaDB [menagerie]> SELECT * FROM pet WHERE name REGEXP '^b';
++--------+--------+---------+------+------------+------------+
+| name   | owner  | species | sex  | birth      | death      |
++--------+--------+---------+------+------------+------------+
+| Buffy  | Harold | dog     | f    | 1989-05-13 | 0000-00-00 |
+| Bowser | Diane  | dog     | m    | 1979-08-31 | 1995-07-29 |
++--------+--------+---------+------+------------+------------+
+2 rows in set (0.00 sec)
